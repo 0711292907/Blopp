@@ -1,5 +1,6 @@
-import express from "express";
-import mysql from "mysql2";
+import express from "express" ;
+import mysql from "mysql2" ;
+import cors from "cors";
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({
@@ -16,6 +17,8 @@ const app = express();
 
 // Define your routes and middleware here
 app.use(express.json());
+app.use(cors());
+
 
 app.get("/", (req, res) => {
   res.json("Hello, this is the backend");
