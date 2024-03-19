@@ -32,6 +32,32 @@ app.get("/books", (req, res) => {
      });
 
 
+
+// Insert a new book
+app.post("/books", (req, res) => {
+    const q = "INSERT INTO books(`title`, `descr`, `cover`, `user_name`) VALUES (?)";
+     const values = [
+       
+     "The graduation day",
+      "To come to think that i spent half a decade in varsity and this day just arrived",
+      "cover.png",
+      "Mafhala Ondisa",
+ 
+     ];
+     pool.query(q, [values], (err, data) => {
+        if (err) return res.send(err);
+         return res.json(data);
+       });
+     });
+
+
+
+
+
+
+
+
+
 // Start the server
 app.listen(8800, () => {
   console.log("Connected to the backend");
