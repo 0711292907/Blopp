@@ -19,6 +19,19 @@ app.get("/", (req, res) => {
   res.json("Hello, this is the backend");
 });
 
+//  Get all books
+app.get("/books", (req, res) => {
+    const q = "SELECT * FROM books";
+       pool.query(q, (err, data) => {
+         if (err) {
+           console.log(err);
+           return res.json(err);
+         }
+         return res.json(data);
+       });
+     });
+
+
 // Start the server
 app.listen(8800, () => {
   console.log("Connected to the backend");
