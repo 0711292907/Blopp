@@ -11,6 +11,7 @@ const pool = mysql.createPool({
   debug: false,
 });
 
+app.use(express.json());
 // Create the Express app
 const app = express();
 
@@ -37,11 +38,11 @@ app.get("/books", (req, res) => {
 app.post("/books", (req, res) => {
     const q = "INSERT INTO books(`title`, `descr`, `cover`, `user_name`) VALUES (?)";
      const values = [
-       
-     "The graduation day",
-      "To come to think that i spent half a decade in varsity and this day just arrived",
-      "cover.png",
-      "Mafhala Ondisa",
+           
+   req.body.title,
+   req.body.descr,
+   req.body.cover,
+   req.body.user_name,
  
      ];
      pool.query(q, [values], (err, data) => {
