@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
-
+  console.log(books);
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
@@ -20,7 +20,7 @@ const Books = () => {
     fetchAllBooks();
   }, []);
 
-  console.log(books);
+  
 
   const handleDelete = async (id) => {
     try {
